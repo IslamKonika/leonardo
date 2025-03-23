@@ -651,6 +651,204 @@ header {
                     }
                 }
             }
+
+            // thirdphase
+
+            #thirdPhase {
+                // display: none;
+                width: 100%;
+                padding: 20px 0;
+
+                .container {
+                    .picupWarpper {
+                        width: 100%;
+                        display: flex;
+
+                        .leftside {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            .heading {
+                                margin-bottom: 30px;
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                            }
+
+                            .leftsideWarpper {
+                                display: flex;
+                                gap: 50px;
+
+                                .picupDate {
+                                    .calendar {
+                                        width: max-content;
+                                        background: white;
+                                        padding: 20px;
+                                        border-radius: 10px;
+                                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                        text-align: center;
+
+                                        .month-nav {
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            font-size: 20px;
+                                            font-weight: bold;
+                                            color: teal;
+                                            margin-bottom: 10px;
+                                        }
+
+                                        .days {
+                                            display: grid;
+                                            grid-template-columns: repeat(7, 1fr);
+                                            gap: 5px;
+
+                                            .day {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                                width: 50px;
+                                                height: 50px;
+                                                border-radius: 5px;
+                                                border: 1px solid #ccc;
+                                                color: #aaa;
+                                                font-size: 14px;
+                                                flex-direction: column;
+                                            }
+
+                                            .day.available {
+                                                color: #fff;
+                                                font-weight: bold;
+                                                border: 2px solid #005157;
+                                                background-color: var(--praimary);
+
+                                                span {
+                                                    color: #fff;
+                                                }
+                                            }
+
+                                            .day.free {
+                                                color: var(--lightGray);
+                                                font-weight: bold;
+                                                border: 2px solid var(--lightGray);
+
+                                                &:hover {
+                                                    background-color: var(--praimary);
+                                                    border-color: var(--praimary);
+                                                    color: #fff;
+                                                }
+
+                                                &:hover span {
+                                                    color: #fff;
+                                                }
+                                            }
+
+                                            .day.paid {
+                                                border: 2px solid black;
+
+                                                &:hover {
+                                                    background-color: #005157;
+                                                    border-color: var(--praimary);
+                                                    color: #fff;
+                                                }
+
+                                                &:hover span {
+                                                    color: #fff;
+                                                }
+                                            }
+
+                                            .day span {
+                                                font-size: 12px;
+                                                color: gray;
+                                            }
+
+                                        }
+
+                                        .continue-btn {
+                                            margin-top: 10px;
+                                            padding: 10px;
+                                            width: 100%;
+                                            border: none;
+                                            border-radius: 5px;
+                                            background: #ccc;
+                                            color: white;
+                                            font-size: 16px;
+                                            cursor: not-allowed;
+
+                                            &:hover {
+                                                background-color: var(--praimary);
+                                                color: #fff;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .arivalWindow {
+                                    .arivalWarper {
+                                        display: flex;
+                                        flex-direction: column;
+                                        gap: 10px;
+
+                                        .arrivalBox {
+                                            width: 100%;
+                                            max-width: 350px;
+                                            padding: 20px;
+                                            border: 2px solid var(--lightGray);
+                                            border-radius: 10px;
+
+                                            .boxHeading {
+                                                display: flex;
+                                                justify-content: space-between;
+                                                margin-bottom: 5px;
+
+                                                span {
+                                                    color: var(--praimary);
+                                                }
+                                            }
+
+                                            p {
+                                                font-size: 14px;
+                                            }
+
+                                            &:hover {
+                                                border: 2px solid var(--praimary);
+                                                color: var(--praimary);
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .scheduleWarpper {
+                                    ol {
+                                        width: 100%;
+                                        display: flex;
+                                        flex-wrap: wrap;
+                                        gap: 10px;
+
+                                        li {
+                                            background-color: var(--praimary);
+                                            padding: 10px 20px;
+                                            color: #fff;
+                                            font-weight: 700;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        .rightSide {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                        }
+                    }
+                }
+            }
+
         }
     }
   }

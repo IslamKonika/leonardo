@@ -3,89 +3,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class AddressController extends Controller
 {
 
-
-    /**
-     * Search for addresses and filter to only show Canadian results
-     *
-     * @param Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function search(Request $request)
-    {
-
-
-            return view('pages.address');
-
-
-        $query = $request->input('q');
-
-        if (strlen($query) < 3) {
-            return response()->json([]);
-        }
-
-        // Get addresses from your address provider API
-        // Replace this with your actual address provider API
-        $response = Http::get('https://your-address-provider.com/api/search', [
-            'query' => $query,
-            'api_key' => config('services.address_provider.api_key'),
-        ]);
-
-        if (!$response->successful()) {
-            return response()->json(['error' => 'Failed to fetch address data'], 500);
-        }
-
-        $addresses = $response->json()['results'] ?? [];
-
-        // Filter to only Canadian addresses
-        $canadianAddresses = $this->filterCanadianAddresses($addresses);
-
-        return response()->json($canadianAddresses);
+    public function search(){
+        return view('pages.address');
     }
 
-    /**
-     * Filter addresses to only include Canadian ones
-     *
-     * @param array $addresses
-     * @return array
-     */
-    private function filterCanadianAddresses($addresses)
+    public function find(Request $request)
+
     {
-        return array_filter($addresses, function($address) {
-            // Canadian postal code regex pattern
-            $postalCodePattern = '/[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d/';
+       $validation=Validator::make($request->all(),[
 
-            // Get the address text based on your data structure
-            $addressText = $address['text'] ?? '';
+        'first_name'=> 'required',
+        'last_name'=> 'required',
+        'building_name'=> 'required',
+        'address_one'=> 'required',
+        'address_two'=> 'required',
+        'town'=> 'required',
+        'instruction'=>'required'
 
-            // Check if it matches Canadian postal code format
-            if (preg_match($postalCodePattern, $addressText)) {
-                return true;
-            }
 
-            // Canadian provinces/territories
-            $canadianProvinces = [
-                'AB', 'BC', 'MB', 'NB', 'NL', 'NS', 'NT', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT',
-                'Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland',
-                'Nova Scotia', 'Northwest Territories', 'Nunavut', 'Ontario',
-                'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Yukon'
-            ];
+       ]);
 
-            // Check if address contains any Canadian province
-            foreach ($canadianProvinces as $province) {
-                if (strpos($addressText, "$province,") !== false ||
-                    strpos($addressText, "$province ") !== false ||
-                    substr($addressText, -strlen($province)) === $province) {
-                    return true;
-                }
-            }
+       if($validation->fails())
+       {
+           dd($validation->getMessageBag());
+           flash()->error('input field empty');
 
-            return false;
-        });
+
+           return redirect()->back();
+       }
     }
 }

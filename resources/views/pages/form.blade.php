@@ -145,37 +145,37 @@ button#editCount {
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" id="" name="" placeholder="First name *" required>
+                                <input type="text" id="" name="first_name" placeholder="First name *" required>
                                 <span class="requires"></span>
                             </div>
                             <div class="col">
-                                <input type="text" id="" name="" placeholder="Last name *" required>
+                                <input type="text" id="" name="last_name" placeholder="Last name *" required>
                                 <span class="requires"></span>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" id="" name="" placeholder="Bulding number/name *" required>
+                                <input type="text" id="" name="building_name" placeholder="Bulding number/name *" required>
                                 <span class="requires"></span>
                             </div>
                             <div class="col">
-                                <input type="text" id="" name="" placeholder="Address line 1 *" required>
+                                <input type="text" id="" name="address_one" placeholder="Address line 1 *" required>
                                 <span class="requires"></span>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col">
-                                <input type="text" id="" name="" placeholder="Address line 2 *" required>
+                                <input type="text" id="" name="address_two" placeholder="Address line 2 *" required>
                                 <span class="requires"></span>
                             </div>
                             <div class="col">
-                                <input type="text" id="" name="" placeholder="Town *" required>
+                                <input type="text" id="" name="town" placeholder="Town *" required>
                                 <span class="requires"></span>
                             </div>
                         </div>
-                        <input type="text" id="" name="" placeholder="Postcode *" required>
+                        <input type="text" id="" name="postcode" placeholder="Postcode *" required>
                         <textarea name="" id="" placeholder="Special instructions" cols="75" rows="4">
 
                         </textarea>
